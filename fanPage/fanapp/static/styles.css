@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;500&display=swap');
+
+body{
+    margin: 0;
+    background-color: #A2C18A;
+}
+header{
+    height: 60px;
+    background-color: rgb(103, 131, 81);
+}
+header ul{
+    margin:0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+ul li{
+    list-style-type:none;
+    font-family: 'Cormorant SC', serif;
+    font-size: 24px;
+}
+ul a:hover{
+    background-color: rgb(141, 173, 116);
+    border-bottom: 1px solid;
+
+}
+li a{
+    margin-top: 50%;
+    color: black;
+    text-decoration: none;
+}
+
+main{
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #C9A190;
+}
+.advertisment{
+    font-family: 'Cormorant SC', serif;
+    font-size: 18px;
+}
+.advertisment>p:first-child{
+    margin:0
+}
+
+.advertisment p{
+    padding-left: 5%;
+}
+.reply{
+    background-color: aliceblue;
+}
+
+.form input{
+    display: inline-block;
+}

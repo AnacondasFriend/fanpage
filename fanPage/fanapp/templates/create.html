@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block title %} Create advertisment {% endblock title %}
+ 
+{% block content %}
+<form method="POST" class="form">
+    {% csrf_token %} 
+    {{ form }}
+    <br>
+    <input type="submit" value="Добавить">
+</form>
+{%endblock content%}

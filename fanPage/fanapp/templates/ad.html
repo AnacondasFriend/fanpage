@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{%load static%}
+{% block title %} Add news {% endblock title %}
+ 
+{% block content %}
+    <div class="allAdvertisments">
+
+        {%for advertisment in ad%}
+            
+            <div class="advertisment">
+                <p>Объявление от: {{advertisment.author.username}}</p>
+                <p>{{advertisment.header}}</p>
+                <p>Категория: {{advertisment.get_category_display}}</p>
+                {%if advertisment.mediaImg %}
+                    {{advertisment.mediaImg}}
+                    <br>
+                {%endif%}
+                <p>{{advertisment.text}}</p>
+                    {% if advertisment.author.username == request.user.username %}
+                    <div><a href = {{advertisment.id}}/change>Редактировать</a></div>
+                    {% endif %}
+                <form id='comment' method="post" >
+                {% csrf_token %}
+                <button class="reply" >
+                    Оставить отклик <img width='30'src='{% static "img/comment-svgrepo-com.svg" %}'> 
+                    
+                </button>
+                
+                <input type="hidden" id="comment" name="pk" value={{advertisment.id}}>
+                <input type="hidden" id="comment" name="user" value={{request.user.id}}>
+            </form>
+                <br>
+            </div>
+
+        {%endfor%}
+    </div>
+{% endblock content %}
+    

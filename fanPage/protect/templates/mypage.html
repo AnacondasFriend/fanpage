@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>Страница авторизованного пользователя {{request.user.username}} <button> <a href="sign/logout/">Выйти</a> </button></h2>
+{% if newReplys%}
+<h3>У вас новые отклики!</h3>
+<div class="'newReplys">
+{% for reply in newReplys %}
+    
+    <div class="newReplys">
+        <p>У вас новый отклик от пользователя {{reply.user.username}} к объявлению {{reply.ad.header}}</p>
+        <p>{{reply.text}}</p>
+        <form method="POST">
+        {% csrf_token %}
+            <input type="hidden" name="add_by_id" value={{reply.id}}>
+            <button>Принять</button>
+        </form>
+        <form method="POST" action="" name="delete">
+             {% csrf_token %}
+            <input type="hidden" name="delete_by_id" value={{reply.id}}>
+            <button type="submit">Отклонить</button>
+        </form>
+    </div>
+{% endfor %}
+</div>
+{% else %} <h3>Пока у вас ни одного нового отклика:(</h3>
+{% endif %}
+<div class="myReplys">
+    <h3>Отклики на ваши объявления</h3>
+    {% for myreply in replys %}
+    <p>Отклик от пользователя {{myreply.reply.user.username}} к объявлению {{myreply.reply.ad.header}}</p>
+        <p>{{myreply.reply.text}}</p>
+        <button>Удалить</button>
+{% endfor %}
+</div>
+{% endblock %}
+
+
+if reply
